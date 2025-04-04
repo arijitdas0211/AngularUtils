@@ -1,48 +1,49 @@
 <div class="container-fluid">
     <div class="row my-2">
         <div class="col-12 p-2 bg-danger text-white rounded-3">
-            <h2>Structural Directive</h2>
+            <h2>Attribute Directive</h2>
             <p>[ngClass], [ngStyle]...</p>
+            <button class="btn btn-sm btn-light" [routerLink]="['/structural-dir']">Go To Structural</button>
         </div>
     </div>
     <div class="row p-2">
         <div class="col-3">
-            <div class="p-4 text-center text-white bg-info">
+            <div class="p-4 text-center text-white" [ngClass]="divBgColor">
                 <h4>Div - 1</h4>
             </div>
         </div>
         <div class="col-3">
-            <div class="p-4 text-center text-white bg-success">
+            <div class="p-4 text-center text-white bg-success" [ngClass]="isDiv2Active ? 'bg-info' : 'bg-warning'">
                 <h4>Div - 2</h4>
             </div>
         </div>
         <div class="col-3">
-            <div class="p-4 text-center text-white bg-dark">
+            <div class="p-4 text-center text-white" [ngClass]="num1 == num2 ? 'bg-success' : 'bg-warning'">
                 <h4>Div - 3</h4>
             </div>
         </div>
         <div class="col-3">
-            <div class="p-4 text-center text-white bg-warning text-white">
+            <div class="p-4 text-center" [ngClass]="isChecked && country == 'India' ? 'bg-black text-white' : 'bg-warning'">
                 <h4>Div - 4</h4>
             </div>
         </div>
     </div>
     <div class="row p-2">
         <div class="col-3 text-center">
-            <button class="btn btn-danger">Add RED</button>
-            <button class="btn btn-primary mx-2">Add BLUE</button>
+            <button class="btn btn-danger" (click)="addRed()">Add RED</button>
+            <button class="btn btn-primary mx-2" (click)="addBlue()">Add BLUE</button>
         </div>
         <div class="col-3 text-center">
-            <button class="btn btn-warning">Toggle</button>
+            <button class="btn btn-warning" (click)="toggleDivColor()">Toggle</button>
         </div>
         <div class="col-3 text-center d-flex">
-            <input type="text" placeholder="Num - 1" />
-            <input type="text" placeholder="Num - 2" />
+            <input type="text" placeholder="Num - 1" [(ngModel)]="num1" class="w-50" />
+            <input type="text" placeholder="Num - 2" [(ngModel)]="num2" class="w-50" />
         </div>
         <div class="col-3 text-center">
             <div>
-                <input type="checkbox" /> &nbsp;
-                <select>
+                <input type="checkbox" [(ngModel)]="isChecked" /> &nbsp;
+                <select [(ngModel)]="country">
                     <option value="">-- select --</option>
                     <option value="India">India</option>
                     <option value="USA">USA</option>
@@ -51,5 +52,26 @@
             </div>
         </div>
     </div>
-    
+    <div class="row p-3">
+        <div class="col-6 p-2">
+            <table class="table table-bordered table-striped-columns">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6 p-2">
+
+        </div>
+    </div>
 </div>
