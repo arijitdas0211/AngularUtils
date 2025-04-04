@@ -1,0 +1,90 @@
+<div class="container-fluid">
+    <div class="row my-2">
+        <div class="col-12 p-2 bg-warning rounded-3">
+            <h2>Structural Directive</h2>
+            <p>*ngIf, *ngFor...</p>
+        </div>
+    </div>
+    <div class="row p-2">
+        <div class="col-3">
+            <div *ngIf="isDiv1Visible" class="p-4 text-center text-white bg-success">
+                <h4>Div - 1</h4>
+            </div>
+        </div>
+        <div class="col-3">
+            <div *ngIf="isDiv2Visible" class="p-4 text-center text-white bg-danger">
+                <h4>Div - 2</h4>
+            </div>
+        </div>
+        <div class="col-3">
+            <div *ngIf="num1 == num2" class="p-4 text-center text-white bg-primary">
+                <h4>Div - 3</h4>
+            </div>
+        </div>
+        <div class="col-3">
+            <div *ngIf="isActive && country == 'India'" class="p-4 text-center text-white bg-dark text-white">
+                <h4>Div - 4</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row p-2">
+        <div class="col-3 text-center">
+            <button class="btn btn-danger" (click)="showDiv1()">Show</button>
+            <button class="btn btn-primary mx-2" (click)="hideDiv1()">Hide</button>
+        </div>
+        <div class="col-3 text-center">
+            <button class="btn btn-success" (click)="toggleDiv2()">Toggle</button>
+        </div>
+        <div class="col-3 text-center d-flex">
+            <input type="text" placeholder="Num - 1" [(ngModel)]="num1" />
+            <input type="text" placeholder="Num - 2" [(ngModel)]="num2" />
+        </div>
+        <div class="col-3 text-center">
+            <div>
+                <input type="checkbox" [(ngModel)]="isActive" /> &nbsp;
+                <select [(ngModel)]="country">
+                    <option value="">-- select --</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="Japan">Japan</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 d-flex flex-column p-3">
+            <label for="city" class="form-label fw-medium">Select City:</label>
+            <select id="city" class="p-2">
+                <option value="">-- Select City --</option>
+                <option *ngFor="let n of city" [value]="n">{{n}}</option>
+            </select>
+        </div>
+        <div class="col-4 p-3">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>Designation</th>
+                        <th>Is Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of studentList; let sr = index">
+                        <td>{{sr + 1}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.city}}</td>
+                        <td>{{user.designation}}</td>
+                        <td>
+                            <span *ngIf="user.isActive">Active</span>
+                            <span *ngIf="!user.isActive">In-Active</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+    </div>
+</div>
